@@ -12,6 +12,8 @@ const endBlink = () => {
   //function to stop blinking
   clearInterval(blinkInterval); // Stop blink intervals
   LED.writeSync(0); // Turn LED off
+  console.log("end blink, interval: ", blinkInteraval);
+  console.log("led state: ", LED.readSync());
 };
 
 const exit = () => {
