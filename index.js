@@ -12,8 +12,6 @@ const endBlink = () => {
   //function to stop blinking
   clearInterval(blinkInterval); // Stop blink intervals
   LED.writeSync(0); // Turn LED off
-  console.log("end blink, interval: ", blinkInterval);
-  console.log("led state: ", LED.readSync());
 };
 
 const exit = () => {
@@ -35,9 +33,12 @@ const blinkLED = () => {
 const start = () => {
   PIR.watch((err, value) => {
     if (err) exit();
-    alarm();
-    console.log("Intruder detected");
-    console.log(value);
+    if (value === 1) {
+      alarm();
+      console.log("Intruder detected");
+    } else {
+      console.log("err, value: ", err, value);
+    }
   });
 };
 
