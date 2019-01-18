@@ -2,17 +2,7 @@ var Gpio = require("onoff").Gpio;
 var PIR = new Gpio(17, "in", "both");
 var LED = new Gpio(4, "out");
 let blinkInterval;
-
-const alarm = () => {
-  blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
-  setTimeout(endBlink, 5000); //stop blinking after 5 seconds
-};
-
-const endBlink = () => {
-  //function to stop blinking
-  clearInterval(blinkInterval); // Stop blink intervals
-  LED.writeSync(0); // Turn LED off
-};
+let streak;
 
 const exit = () => {
   // Unexport GPIO to free resources
@@ -21,7 +11,15 @@ const exit = () => {
   process.exit();
 };
 
+const endBlink = () => {
+  //function to stop blinking
+  clearInterval(blinkInterval); // Stop blink intervals
+  LED.writeSync(0); // Turn LED off
+};
+
 const blinkLED = () => {
+  blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
+
   if (LED.readSync() === 0) {
     //check the pin state, if the state is 0 (or off)
     LED.writeSync(1); //set pin state to 1 (turn LED on)
@@ -34,10 +32,12 @@ const start = () => {
   PIR.watch((err, value) => {
     if (err) exit();
     if (value === 1) {
-      alarm();
-      console.log("Intruder detected");
+      streak++;
+      blinkLED();
+      console.log("Intruder detected, ", streak);
     } else {
-      console.log("err, value: ", err, value);
+      streak = 0;
+      endBlink();
     }
   });
 };
