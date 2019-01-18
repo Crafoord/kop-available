@@ -33,10 +33,10 @@ const start = () => {
     if (err) exit();
     if (value === 1) {
       blinkLED();
-      console.log("Someone is playing! ");
+      console.log(new Date().toTimeString, "Someone is playing! ");
     } else {
       endBlink();
-      console.log("Ping pong is available!");
+      console.log(new Date().toTimeString, "Ping pong is available!");
     }
   });
 };
