@@ -4,7 +4,7 @@ var LED = new Gpio(4, "out");
 let blinkInterval;
 
 const alarm = () => {
-  this.blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
+  blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
   setTimeout(endBlink, 5000); //stop blinking after 5 seconds
 };
 
