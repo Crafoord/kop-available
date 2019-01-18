@@ -1,0 +1,22 @@
+{
+  "name": "kop-available",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Crafoord/kop-available.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Crafoord/kop-available/issues"
+  },
+  "homepage": "https://github.com/Crafoord/kop-available#readme",
+  "dependencies": {
+    "onoff": "^3.2.2"
+  }
+}
