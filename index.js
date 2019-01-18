@@ -18,6 +18,7 @@ const endBlink = () => {
 };
 
 const blinkLED = () => {
+  clearInterval(blinkInterval); // Stop blink intervals
   blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
 
   if (LED.readSync() === 0) {
@@ -34,10 +35,11 @@ const start = () => {
     if (value === 1) {
       streak++;
       blinkLED();
-      console.log("Intruder detected, ", streak);
+      console.log("Someone is playing! ", streak);
     } else {
       streak = 0;
       endBlink();
+      console.log("Ping pong is available!");
     }
   });
 };
