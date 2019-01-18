@@ -2,7 +2,6 @@ var Gpio = require("onoff").Gpio;
 var PIR = new Gpio(17, "in", "both");
 var LED = new Gpio(4, "out");
 let blinkInterval;
-let streak;
 
 const exit = () => {
   // Unexport GPIO to free resources
@@ -33,11 +32,9 @@ const start = () => {
   PIR.watch((err, value) => {
     if (err) exit();
     if (value === 1) {
-      streak++;
       blinkLED();
-      console.log("Someone is playing! ", streak);
+      console.log("Someone is playing! ");
     } else {
-      streak = 0;
       endBlink();
       console.log("Ping pong is available!");
     }
