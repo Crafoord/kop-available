@@ -10,7 +10,7 @@ const exit = () => {
 };
 
 const start = () => {
-  socket.on("available", message => {
+  socket.on("busy", message => {
     console.log(message);
   });
 
@@ -18,9 +18,9 @@ const start = () => {
   PIR.watch((err, value) => {
     if (err) exit();
     if (value === 1) {
-      socket.emit("available", false);
+      socket.emit("busy", true);
     } else {
-      socket.emit("available", true);
+      socket.emit("busy", false);
     }
   });
 };
