@@ -10,7 +10,6 @@ const exit = () => {
 };
 
 const start = () => {
-  console.log(URL);
   socket.on("available", message => {
     console.log(message);
   });
