@@ -1,7 +1,7 @@
 var Gpio = require("onoff").Gpio;
 var PIR = new Gpio(17, "in", "both");
 var URL = require("./secrets.js").URL;
-var socket = require("socket.io-client")(URL);
+var io = require("socket.io-client");
 
 const exit = () => {
   // Unexport GPIO to free resources
@@ -10,6 +10,11 @@ const exit = () => {
 };
 
 const start = () => {
+  var socket = io.connect(URL);
+  socket.on("available", message => {
+    console.log(message);
+  });
+
   console.log("Started!");
   PIR.watch((err, value) => {
     if (err) exit();
