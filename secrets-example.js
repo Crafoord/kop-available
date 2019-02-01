@@ -1,1 +1,1 @@
-export const URL = "url-to-socket";
+const URL = "url-to-socket";
