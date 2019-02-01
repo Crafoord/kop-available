@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Crafoord/kop-available#readme",
   "dependencies": {
-    "onoff": "^3.2.2"
+    "onoff": "^3.2.2",
+    "socket.io-client": "^2.2.0"
   }
 }
