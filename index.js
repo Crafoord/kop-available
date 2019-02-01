@@ -8,6 +8,7 @@ const exit = () => {
 };
 
 const start = () => {
+  console.log("Started!");
   PIR.watch((err, value) => {
     if (err) exit();
     if (value === 1) {
