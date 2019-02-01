@@ -11,10 +11,8 @@ const start = () => {
   PIR.watch((err, value) => {
     if (err) exit();
     if (value === 1) {
-      blinkLED();
       console.log(new Date().toTimeString(), "Someone is playing! ");
     } else {
-      endBlink();
       console.log(new Date().toTimeString(), "Ping pong is available!");
     }
   });
